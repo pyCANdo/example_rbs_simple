@@ -1,0 +1,60 @@
+{
+  "version": 2,
+  "entries": [
+    {
+      "id": "create-timer",
+      "title": "Create a one-second timer",
+      "explanation": "Register a timer named timer_1s. It runs once per second and starts automatically with the simulation.",
+      "sources": [
+        {
+          "file": "rbs/main.py",
+          "selector": {
+            "kind": "python-assignment",
+            "name": "timer_1s"
+          }
+        }
+      ]
+    },
+    {
+      "id": "handle-timer",
+      "title": "Handle the timer with a decorator",
+      "explanation": "The decorator connects this callback to timer_1s. Every time the timer elapses, the callback sends the Control_01 CAN message.",
+      "sources": [
+        {
+          "file": "rbs/main.py",
+          "selector": {
+            "kind": "python-function",
+            "name": "on_timer_1s",
+            "includeDecorators": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "receive-control-01",
+      "title": "Create and receive the CAN2 message",
+      "explanation": "Resolve Control_01 from the DBC on CAN2. The decorated callback runs whenever that message is received on CAN2 and prints the raw Activate signal value.",
+      "sources": [
+        {
+          "file": "rbs/main.py",
+          "selector": {
+            "kind": "python-assignment",
+            "name": "control_01_msg"
+          }
+        },
+        {
+          "file": "rbs/main.py",
+          "selector": {
+            "kind": "python-function",
+            "name": "on_control_01_msg",
+            "includeDecorators": true
+          }
+        }
+      ]
+    }
+  ],
+  "link": {
+    "label": "Timer API documentation",
+    "url": "https://docs.pycando.com/pyrbs/api_timers.html"
+  }
+}

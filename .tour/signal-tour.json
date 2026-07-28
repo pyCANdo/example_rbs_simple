@@ -1,0 +1,60 @@
+{
+  "version": 2,
+  "entries": [
+    {
+      "id": "access-can1-target-speed",
+      "title": "Access the CAN1 signal",
+      "explanation": "Resolve the database-backed Control_01 message and its Target_Speed signal explicitly on CAN1. The phys property exposes the value in the DBC unit, rpm.",
+      "sources": [
+        {
+          "file": "rbs/examples/signal/main.py",
+          "selector": {
+            "kind": "python-assignment",
+            "name": "control_01_tx"
+          }
+        },
+        {
+          "file": "rbs/examples/signal/main.py",
+          "selector": {
+            "kind": "python-assignment",
+            "name": "target_speed_tx"
+          }
+        }
+      ]
+    },
+    {
+      "id": "change-and-send-target-speed",
+      "title": "Change and send the signal on CAN1",
+      "explanation": "Every second, increase the physical Target_Speed value by 250 rpm, wrap it after 4000 rpm and send the updated Control_01 message on CAN1.",
+      "sources": [
+        {
+          "file": "rbs/examples/signal/main.py",
+          "selector": {
+            "kind": "python-function",
+            "name": "send_next_target_speed",
+            "includeDecorators": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "receive-target-speed",
+      "title": "Receive and read the signal on CAN2",
+      "explanation": "When Control_01 arrives on CAN2, access Target_Speed through the received message and print its physical rpm value.",
+      "sources": [
+        {
+          "file": "rbs/examples/signal/main.py",
+          "selector": {
+            "kind": "python-function",
+            "name": "on_control_01_received",
+            "includeDecorators": true
+          }
+        }
+      ]
+    }
+  ],
+  "link": {
+    "label": "CAN message and signal API documentation",
+    "url": "https://docs.pycando.com/pyrbs/api_canbus.html"
+  }
+}
