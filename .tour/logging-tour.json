@@ -1,0 +1,46 @@
+{
+  "version": 2,
+  "entries": [
+    {
+      "id": "add-bus-logger",
+      "title": "Add the bus logger",
+      "explanation": "Register first_steps_log with the pyRBS bus logger handler. Because no channel filter is supplied, the trace records the available CAN channels, including CAN1 and CAN2.",
+      "sources": [
+        {
+          "file": "rbs/examples/logging/main.py",
+          "selector": {
+            "kind": "python-assignment",
+            "name": "bus_logger"
+          }
+        }
+      ]
+    },
+    {
+      "id": "start-and-stop-logging",
+      "title": "Start and stop with the simulation",
+      "explanation": "Start recording when the simulation starts. Stop the logger during shutdown so pyRBS closes the session and exports the MF4 log file.",
+      "sources": [
+        {
+          "file": "rbs/examples/logging/main.py",
+          "selector": {
+            "kind": "python-function",
+            "name": "start_logging",
+            "includeDecorators": true
+          }
+        },
+        {
+          "file": "rbs/examples/logging/main.py",
+          "selector": {
+            "kind": "python-function",
+            "name": "stop_logging",
+            "includeDecorators": true
+          }
+        }
+      ]
+    }
+  ],
+  "link": {
+    "label": "Bus logger API documentation",
+    "url": "https://docs.pycando.com/pyrbs/api_buslogger.html"
+  }
+}
